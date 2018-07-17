@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'airstreamregular';
+    src: url('fonts/Airstream-webfont.eot');
+    src: url('fonts/Airstream-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Airstream-webfont.woff') format('woff'),
+    url('fonts/Airstream-webfont.ttf') format('ttf'),
+    url('fonts/Airstream-webfont.svg#airstreamregular') format('svg');
+}
+@font-face {
+    font-family: 'lakeshore';
+    src: url('fonts/LAKESHOR-webfont.eot');
+    src: url('fonts/LAKESHOR-webfont.eot?#iefix') format('embedded-opentype'), 
+         url('fonts/LAKESHOR-webfont.woff') format('woff'), 
+         url('fonts/LAKESHOR-webfont.ttf') format('ttf'), 
+         url('fonts/LAKESHOR-webfont.svg#lakeshore') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 允许内容填满浏览器或设备窗口 */
+html,body{
+    height: 100%;
+}
+
+body {
+    /* 将body变为flex容器 */
+    /* flex : flex-grow flex-shrink flex-basis 
+    *  第一个值是flex项目的拉伸程度
+    */
+    display: flex;
+    /* 调换flex方向 为纵向 column 纵向，柱状  */
+    flex-direction: column;
+
+    font-size: 10px;
+    background: rgba(71, 255, 248, 078);
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-header {
+    /* 可以解读为： .main-header 无须进行拉伸，如有必要将会收缩，自动计算大小 */
+    flex: 0 1 auto;
+}
+
+.logo-text {
+    background: white;
+    /* logo文字处于中心 */
+    text-align: center;
+    /* 字体变形 英文变大写 对中文无影响 */
+    text-transform: uppercase;
+    font-family: lakeshore;
+    font-size: 37px;
+}
+
+.main-content {
+    /* 由于header不拉伸 所以content将占据剩余所有的空间 */
+    flex: 1 1 auto;
+    /* 将其变成 flex容器 */
+    display: flex;
+    /* 调换flex方向 为纵向 column 纵向，柱状  */
+    flex-direction: column;
+}
+
+/* .thumbnail-item+.thumbnail-item {
+    margin-top: 10px;
+} */
+
+.thumbnail-item {
+    /* display: block; */
+    display: inline-block;
+    /* width: 120px; */
+    min-width: 120px;
+    max-width: 120px;
+    border: 1px solid rgb(100%, 100%, 100%);
+    border: 1px solid rgba(100%, 100%, 100%, 0.8);
+}
+
+.thumbnail-list {
+    flex: 0 1 auto;
+    order: 2;
+    /* 将其中的元素 成为flex项目 */
+    display: flex;
+    /* justify-content 决定flex 容器如何控制flex项目在主轴方
+    *  向上的绘制方式
+    *  space-between 是保证几个flex项目之间的间隙是相等的
+    *  除此之外 还有flex-start flex-end center 
+    *  space-around
+    */
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    /* 如果要不产生换行 就要允许滚动 */
+    white-space: nowrap;
+    /* 告诉浏览器 在水平方向上添加滚动条 前提是内容被填满时 */
+    overflow-x: auto;
+}
+
+.thumbnail-image {
+    display: block;
+    width: 100%;
+}
+
+.thumbnail-title {
+    display: block;
+    margin: 0;
+    padding: 4px 10px;
+    background: rgb(96, 125, 139);
+    color: rgb(202, 238, 255);
+    font-size: 18px;
+}
+
+.detail-image-container {
+    flex: 1 1 auto;
+    display: flex;
+    /* 使flex项目沿主轴方向 在此是默认的水平方向上居中 */
+    justify-content: center;
+    /* 使flex项目在恻轴方向 在此是默认的垂直方向上居中 */
+    align-items: center;
+    /* 以上可使container居于正中 */
+}
+
+.detail-image-frame {
+    /* 因为既需要将它保留在常规文档流中
+     * 又需要它作为绝对定位元素的容器
+     */
+    position: relative;
+    text-align: center;
+}
+
+.detail-image {
+    width: 90%;
+}
+
+.detail-iamge-title {
+    position: absolute;
+    bottom: -16px;
+    left: 4px;
+    font-family: airstreamregular;
+    color: white;
+    text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
+    font-size: 40px;
+}
+
+/* 应用媒体查询 */
+@media all and (min-width: 768px) {
+    /* 当设备宽度在768px及以上时 媒体查询会被激活 */
+    .main-content {
+        /* 缩略图将以一行显示 */
+        flex-direction: row;
+        overflow: hidden;
+    }
+    
+    .thumbnail-list {
+        /* 将list 设置成以一列显示 */
+        flex-direction: column;
+        order: 0;
+        margin-left: 20px;
+    }
+    
+    .thumbnail-item {
+        max-width: 260px;
+    }
+    /* 设置list中item的间隔 */
+    .thumbnail-item + .thumbnail-item {
+        margin-top: 20px;
+    }
+}

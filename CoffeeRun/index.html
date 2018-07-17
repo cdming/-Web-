@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CoffeeRun</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+    <header>
+        <h1>CoffeeRun</h1>
+    </header>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="" data-coffee-order="form">
+                    <div class="form-group">
+                        <label for="coffeeOrder">Coffee Order</label>
+                        <input type="text" class="form-control" name="coffee" id="coffeeOrder" autofocus>
+                    </div>
+                    <!-- 添加邮箱地址输入 -->
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+                        <input type="email" id="emailInput" class="form-control" name="emailAddress" placeholder="请输入你的邮箱地址">
+                    </div>
+                    <!-- 添加单选按钮 -->
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" name="size" value="short" checked> 小杯
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" name="size" value="tall"> 中杯
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label for="">
+                            <input type="radio" name="size" value="grande"> 大杯
+                        </label>
+                    </div>
+                    <!-- 添加下拉菜单 选择口味 -->
+                    <div class="form-group">
+                        <label for="flavorShot">Flavor Shot/口味选择</label>
+                        <select name="flavor" id="flavorShot" class="form-control">
+                            <option value="">None</option>
+                            <option value="caramel">Caramel</option>
+                            <option value="almond">Almond</option>
+                            <option value="mocha" selected>Mocha</option>
+                        </select>
+                    </div>
+
+                    <!-- 添加范围模块 -->
+                    <div class="form-group">
+                        <label for="strengthLevel">Caffeine Rating</label>
+                        <input type="range" name="strength" id="strengthLevel" type="range" value="30">
+                    </div>
+                    <!-- 添加提交和重置按钮 -->
+                    <button type="submit" class="btn btn-primary">提交</button>
+                    <button type="reset" class="btn btn-default">重置</button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" charset="UTF-8"></script>
+    <script src="scripts/formhandler.js"></script>
+    <script src="scripts/datastore.js" charset="UTF-8"></script>
+    <script src="scripts/truck.js" charset="UTF-8"></script>
+    <script src="scripts/main.js" charset="UTF-8"></script>
+</body>
+
+</html>

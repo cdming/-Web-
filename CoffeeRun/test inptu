@@ -1,0 +1,6 @@
+var myTruck = new App.Truck('007',new App.DataStore());
+
+myTruck.createOrder({emailAddress:'aa@qq.com',coffee:'decaf'})
+myTruck.createOrder({emailAddress:'bb@qq.com',coffee:'decaf*3'})
+
+myTruck.printOrders();
