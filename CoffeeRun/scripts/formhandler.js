@@ -46,6 +46,9 @@
             console.log(data);
             // 在formhandler.js的提交处理程序回调中调用fn 并把包含用户输入的数据对象传递给fn
             fn(data);
+            this.reset();
+            // 通过elements属性轻松获得各个表单字段，elements是表单字段数组，可以从0开始索引并引用。
+            this.elemetns[0].focus();
         });
          
      };
