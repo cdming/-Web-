@@ -5,10 +5,13 @@
 (function (window) {
     'use strict';
     var FORM_SELECTOR = '[data-coffee-order="form"]';
+    var CHECKLIST_SELECTOR = '[data-coffee-order="checklist"]';
     var App = window.App;
     var Truck = App.Truck;
     var DataStore = App.DataStore;
     var FormHandler = App.FormHandler;
+    // var checklist =App.checklist;
+    var checklist = new checklist(CHECKLIST_SELECTOR);
     var myTruck = new Truck('forfly', new DataStore());
 
     // 由于变量是在mian的函数内部声明的，而函数的外部（甚至控制台）都无法访问函数内部的变量
@@ -22,7 +25,11 @@
     // createOrder在事件处理回调中被调用时，它的所有者会发生变化
     // 此时createOrder内部的this将不在是Trunk实例
     // 应该把myTruck.createOrder的所有者绑定为myTruck，然后再把这个函数传递给FormHandler.addSubmitHandler
-    formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
+    // formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
+    formHandler.addSubmitHandler(function (data) {
+        myTruck.createOrder(data);
+        checkList.addRow(data);
+    });
     console.log(formHandler);
     
 
