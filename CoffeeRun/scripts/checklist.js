@@ -60,7 +60,7 @@
             'data-coffee-order': 'checkbox','class':'checkbox'
         });
         // 使用$函数创建label元素
-        var $label = '$'('<label></label>');
+        var $label = $('<label></label>');
 
         var $checkbox = $('<input></input>', {
             type: 'checkbox',
