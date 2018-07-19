@@ -20,8 +20,21 @@
         }
     }
 
+    // 添加addClickHandler
+    CheckList.prototype.addClickHandler = function (fn) {
+        this.$element.on('click','input',function (event) {
+            var email = event.target.value;
+            this.removeRow(email);
+            fn(email);
+        }.bind(this));
+    };
+
     // 创建CheckList实例
     CheckList.prototype.addRow = function (coffeeOrder) {
+
+        //移除匹配相应邮箱地址的已有行
+        this.removeRow(coffeeOrder.emailAddress);
+
         // 使用coffeeOrder 咖啡订单信息创建一个新的实例
         var rowElemnent = new Row(coffeeOrder);
 
@@ -29,7 +42,7 @@
         this.$element.appdend(rowElemnent.$element);
 
         // 以上就是将Row的DOM子树添加到页面所要做的所有工作。
-    }
+    };
     // 添加删除Row方法
     CheckList.prototype.removeRow = function (email) {
         // 链式调用几个方法
@@ -37,7 +50,7 @@
                     .find('value="'+email+'"]')
                     .closest('[data-coffee-order="checkbox"]')
                     .remove();
-    }
+    };
 
 
 

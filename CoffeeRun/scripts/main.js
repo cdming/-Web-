@@ -10,8 +10,9 @@
     var Truck = App.Truck;
     var DataStore = App.DataStore;
     var FormHandler = App.FormHandler;
-    // var checklist =App.checklist;
-    var checklist = new checklist(CHECKLIST_SELECTOR);
+    var CheckList =App.CheckList;
+    var checkList = new CheckList(CHECKLIST_SELECTOR);
+    checkList.addClickHanler(myTruck.deliverOrder.bind(myTruck));
     var myTruck = new Truck('forfly', new DataStore());
 
     // 由于变量是在mian的函数内部声明的，而函数的外部（甚至控制台）都无法访问函数内部的变量
